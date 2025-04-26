@@ -2,6 +2,8 @@ package org.pom_TestCases;
 
 
 import org.BaseUtility.startUp;
+import org.GenericMethod.Dashboadpage;
+import org.GenericMethod.Loginpage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.pom_Pages.LoginPage;
@@ -21,6 +23,8 @@ public class LoginPageTestCases {
 	private WebDriver driver;
 	startUp bu;
 	PropertiesGeneric pro;
+	Loginpage lg =new Loginpage();
+	Dashboadpage dp =new Dashboadpage();
 	
 	@BeforeMethod
 	public void initBrowser() {
@@ -36,18 +40,11 @@ public class LoginPageTestCases {
 	}
 	
   @Test()
-  public void verifyLoginPage() {
+  public void verifyLoginPage() throws InterruptedException {
 	  LoginPage lp= new LoginPage(driver); 
 	  SoftAssert sa = new SoftAssert();
-	lp.emailField();
-	lp.PasswordField();
-	lp.getLogin();
-	sa.assertEquals(lp.isFriendsTxt_Display(),"Friends");
-	lp.ispostInputFieldClick();
-	lp.postInputField();
-	lp.postBtn();
-	
-	sa.assertAll();
+	  lg.LoginField(driver);
+      sa.assertAll();
 	
 	
 	
